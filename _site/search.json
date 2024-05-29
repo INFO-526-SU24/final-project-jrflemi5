@@ -2,30 +2,30 @@
   {
     "objectID": "proposal.html",
     "href": "proposal.html",
-    "title": "Proposal title",
+    "title": "Method to the Madness",
     "section": "",
-    "text": "library(tidyverse)"
+    "text": "library(tidyverse)\nlibrary(readr)"
   },
   {
     "objectID": "proposal.html#dataset",
     "href": "proposal.html#dataset",
-    "title": "Proposal title",
+    "title": "Method to the Madness",
     "section": "Dataset",
-    "text": "Dataset\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nMake sure to load the data and use inline code for some of this information."
+    "text": "Dataset\n\nteam_results &lt;- read_csv(\"data/team-results.csv\")\npublic_picks &lt;- read_csv(\"data/public-picks.csv\")\nhead(team_results)\n\n# A tibble: 6 × 20\n  `TEAM ID` TEAM     PAKE `PAKE RANK`  PASE `PASE RANK` GAMES     W     L `WIN%`\n      &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1         1 Abilen…   0.7          45   0.7          52     3     1     2  0.333\n2         2 Akron    -0.9         179  -1.1         187     4     0     4  0    \n3         3 Alabama  -2.1         211  -2.9         220    10     5     5  0.5  \n4         4 Albany   -0.4         147  -0.3         138     3     0     3  0    \n5         6 Americ…  -0.5         160  -0.4         150     3     0     3  0    \n6         8 Arizona  -1.7         206  -2.5         216    28    17    11  0.607\n# ℹ 10 more variables: R64 &lt;dbl&gt;, R32 &lt;dbl&gt;, S16 &lt;dbl&gt;, E8 &lt;dbl&gt;, F4 &lt;dbl&gt;,\n#   F2 &lt;dbl&gt;, CHAMP &lt;dbl&gt;, TOP2 &lt;dbl&gt;, `F4%` &lt;chr&gt;, `CHAMP%` &lt;chr&gt;\n\nhead(public_picks)\n\n# A tibble: 6 × 9\n   YEAR `TEAM NO` TEAM    R64    R32    S16    E8     F4     FINALS\n  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; \n1  2024      1079 Akron   7.16%  2.18%  0.63%  0.22%  0.10%  0.04% \n2  2024      1078 Alabama 87.11% 55.73% 13.55% 7.31%  2.89%  1.10% \n3  2024      1077 Arizona 95.19% 81.05% 52.02% 22.26% 10.05% 4.06% \n4  2024      1076 Auburn  90.17% 59.97% 15.93% 7.95%  3.64%  1.34% \n5  2024      1075 Baylor  92.34% 71.07% 33.68% 12.15% 4.35%  1.83% \n6  2024      1073 BYU     75.17% 21.70% 6.92%  1.64%  0.64%  0.32% \n\n\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nDataset Description: this dataset contains 2 .csv files. One called team-results.csv and another called public-picks.csv. Team-results contains ‘TEAMID’ as the unique identifier or primary key as well as several attributes that quantify the team’s performance in the tournament in each round. Team-results also quantifies the team’s performance vs Komputer Expectations and Seed Expectations.\nPublic-picks.csv contains public prediction data for teams in the tournament. Public-picks contains ‘TEAMNO’ as the unique identifier or primary key. Public-picks contains several attributes quantifying the percent of people who picked that team to win each round of the tournament.\nI chose this dataset for several reasons. I love sports, and wanted to use a dataset that is relevant to my personal interests in order to make this project more interesting. Any sports fan knows that “did you fill out your bracket?” dominates water cooler conversations in late February and early March. There are no recorded instances of someone making a perfect bracket prediction, and the odds of that happening are infinitesimal. When large numbers of crowds are attempting to predict unpredictable outcomes (gambling, the stock market) some interesting hivemind dynamics can come into play. One example, almost every year, a 12-seed team upsets a 5-seed team. One of the common questions asked when people fill out brackets is “who is your 12-5?” meaning: “of the 4 games in the first round in which a 12 seed plays a 5 seed, which 12 seed do you think will get the victory?” A quick google search shows that in the past 18 NCAA Tournaments, there have been 30 instances of a 12-5 upset. This equates to a 41.6% win percentage for a much lower seeded team. This seems unlikely, but happens with some regularity (almost half the time). I am also interested in discovering which teams, if any, consistently outperform or underperform fan expectations.\nMake sure to load the data and use inline code for some of this information."
   },
   {
     "objectID": "proposal.html#questions",
     "href": "proposal.html#questions",
-    "title": "Proposal title",
+    "title": "Method to the Madness",
     "section": "Questions",
-    "text": "Questions\nThe two questions you want to answer."
+    "text": "Questions\nThe two questions you want to answer.\nQ1: How accurate are public predictions in each round of the NCAA tournament compared to actual outcomes?\nQ2: Which Men’s College Basketball teams consistently outperform or underperform fan expectations/tournament seeding?"
   },
   {
     "objectID": "proposal.html#analysis-plan",
     "href": "proposal.html#analysis-plan",
-    "title": "Proposal title",
+    "title": "Method to the Madness",
     "section": "Analysis plan",
-    "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any)."
+    "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).\n\nQ1 plan: load the datasets into Rstudio. Ensure correct formatting. Dataframes may have to be merged on a common value (primary keys). Then for each team in each round I will compare the public pick percentages with the actual outcomes and determine metrics for prediction accuracy. My hypothesis is that as the rounds advance toward Final 4 and championship, public pick accuracy will decrease. I will then determine which visualizations will be most effective in communicating my findings\nQ2 plan: Load and clean data from team-results.csv. Use PASE and PASERANK columns to determine how teams performed relative to seed expectations. Use data from public-picks.csv to determine how the team performed relative to crowd expectations. Identify which teams (if any) consistently over or underperform relative to seeding and crowd expectations. Then I will determine the appropriate ways to visualize this information."
   },
   {
     "objectID": "index.html",
@@ -81,7 +81,7 @@
     "href": "presentation.html#tables",
     "title": "Project title",
     "section": "Tables",
-    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale"
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale"
   },
   {
     "objectID": "presentation.html#images",
@@ -110,5 +110,26 @@
     "title": "About",
     "section": "",
     "text": "This project was developed by [Team Name] For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nTeam member 1: One sentence description of Team member 1 (e.g., year, major, etc.).\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.).\nTeam member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\nTeam member 4: One sentence description of Team member 4 (e.g., year, major, etc.)."
+  },
+  {
+    "objectID": "proposal.html#plan-of-attack",
+    "href": "proposal.html#plan-of-attack",
+    "title": "Method to the Madness",
+    "section": "Plan of attack",
+    "text": "Plan of attack\n\n\n\n\n\n\n\n\n\n\nTask Name\nStatus\nDue\nPriority\nSummary\n\n\n\n\nImport and clean dataset\nNot done\n5/31\nHigh\nEnsure data is appropriately imported for analysis\n\n\nExplore dataset\nNot done\n6/3\nHigh\nConduct data exploration to understand attributes and relationships\n\n\nTransform and prep data\nNot done\n6/9\nHigh\nPrep data for analysis by ensuring all data is in clean format for processing\n\n\n“80%” solution for Q1\nNot done\n6/14\nHigh\nEstablish effective comparison of public predictions to actual outcomes\n\n\n“80%” solution for Q2\nNot done\n6/18\nHigh\nIdentify over and underperformers relative to seeding and public predictions\n\n\nDevelop visualizations\nNot done\n6/21\nHigh\nDetermine and develop appropriate visualizations to report findings\n\n\nReview and refine visualizations\nNot done\n6/23\nHigh\nGive visualizations a “once over” to ensure they effectively present data\n\n\nFinal report and presentation\nNot done\n6/24\nHigh\nCompile findings and visualizations into a comprehensive report for presentation"
+  },
+  {
+    "objectID": "presentation.html",
+    "href": "presentation.html",
+    "title": "Project title",
+    "section": "",
+    "text": "The presentation is created using the Quarto CLI\n## sets the start of a new slide\n\n\n\n\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis\n\n\n\n\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSome text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#footnotes",
+    "href": "presentation.html#footnotes",
+    "title": "Project title",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAnd add footnotes↩︎"
   }
 ]
