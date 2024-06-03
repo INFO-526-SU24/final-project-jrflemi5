@@ -39,23 +39,19 @@ head(public_picks)
 
 ```
 
-A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
-
 **Dataset Description:** this dataset contains 2 .csv files. One called team-results.csv and another called public-picks.csv. Team-results contains 'TEAMID' as the unique identifier or primary key as well as several attributes that quantify the team's performance in the tournament in each round. Team-results also quantifies the team's performance vs Komputer Expectations and Seed Expectations.
 
 Public-picks.csv contains public prediction data for teams in the tournament. Public-picks contains 'TEAMNO' as the unique identifier or primary key. Public-picks contains several attributes quantifying the percent of people who picked that team to win each round of the tournament.
 
 I chose this dataset for several reasons. I love sports, and wanted to use a dataset that is relevant to my personal interests in order to make this project more interesting. Any sports fan knows that "did you fill out your bracket?" dominates water cooler conversations in late February and early March. There are no recorded instances of someone making a perfect bracket prediction, and the odds of that happening are infinitesimal. When large numbers of crowds are attempting to predict unpredictable outcomes (gambling, the stock market) some interesting hivemind dynamics can come into play. One example, almost every year, a 12-seed team upsets a 5-seed team. One of the common questions asked when people fill out brackets is "who is your 12-5?" meaning: "of the 4 games in the first round in which a 12 seed plays a 5 seed, which 12 seed do you think will get the victory?" A quick google search shows that in the past 18 NCAA Tournaments, there have been 30 instances of a 12-5 upset. This equates to a 41.6% win percentage for a much lower seeded team. This seems unlikely, but happens with some regularity (almost half the time). I am also interested in discovering which teams, if any, consistently outperform or underperform fan expectations.
 
-Make sure to load the data and use inline code for some of this information.
-
 ## Questions
 
 The two questions you want to answer.
 
-Q1: How accurate are public predictions in each round of the NCAA tournament compared to actual outcomes?
+Q1: How accurate were public predictions in each round of the 2024 NCAA tournament compared to actual outcomes?
 
-Q2: Which Men's College Basketball teams consistently outperform or underperform fan expectations/tournament seeding?
+Q2: Which Men's College Basketball teams consistently outperform or underperform tournament seeding?
 
 ## Analysis plan
 
@@ -68,7 +64,7 @@ Q2 plan: Load and clean data from team-results.csv. Use PASE and PASERANK column
 ## Plan of attack
 
 | Task Name                        | Status   | Due  | Priority | Summary                                                                          |
-|----------------------------------|----------|------|----------|----------------------------------------------------------------------------------|
+|----------|----------|----------|----------|--------------------------------|
 | Import and clean dataset         | Not done | 5/31 | High     | Ensure data is appropriately imported for analysis                               |
 | Explore dataset                  | Not done | 6/3  | High     | Conduct data exploration to understand attributes and relationships              |
 | Transform and prep data          | Not done | 6/9  | High     | Prep data for analysis by ensuring all data is in clean format for processing    |
@@ -77,3 +73,13 @@ Q2 plan: Load and clean data from team-results.csv. Use PASE and PASERANK column
 | Develop visualizations           | Not done | 6/21 | High     | Determine and develop appropriate visualizations to report findings              |
 | Review and refine visualizations | Not done | 6/23 | High     | Give visualizations a "once over" to ensure they effectively present data        |
 | Final report and presentation    | Not done | 6/24 | High     | Compile findings and visualizations into a comprehensive report for presentation |
+
+## Explanation of terms (for non sports fans)
+
+Every year at the end of the Men's College Basketball season, the best 64 teams are selected by a committee to participate in a tournament to determine the champion of the season. The tournament is conducted in a single elimination format, meaning a team is eliminated from contention as soon as they lose a game. The teams are assigned "seeds" between 1 and 16. The seeding is kind of like a rank. The 4 teams with a 1 seed are considered the favorites to win the tournament, while the 4 teams with a 16 seed are the underdogs. A bracket looks something like this.
+
+![](images/clipboard-3288154348.png){width="590"}
+
+In the opening round, the 16 seeds play against 1 seeds, 15 seeds play against 2 seeds, and so on. This is advantageous to the higher seed teams because they begin the tournament playing against teams ranked significantly lower than them. There has only been 1 instance of a 16 seed beating a 1 seed in the history of the tournament. As discussed before, there have been many instances of 12 seeds defeating 5 seeds, which seems counter-intuitive because of how the seeds are assigned (upsets of that nature should be uncommon).
+
+After seeds are assigned and the teams all "know their place" in the tournament, fans (and oftentimes even non sports fans) will make predictions as to how the tournament could play out. There are no recorded instances of someone making a perfectly correct bracket prediction. There are 63 games in the tournament, which calculates to 2\^63 possible outcomes. The odds of a random guesser filling out a perfect bracket are 1 in 9.2 quintillion. The tournament only lasts a few days and is often filled with upsets, unlikely contenders lasting much longer than they should (often referred to as Cinderella Stories), and basketball on the television all day for several days for sports fans. This short lived excitement has earned the tournament the nickname "March Madness".
