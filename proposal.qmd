@@ -64,7 +64,7 @@ Q2 plan: Load and clean data from team-results.csv. Use PASE and PASERANK column
 ## Plan of attack
 
 | Task Name                        | Status   | Due  | Priority | Summary                                                                          |
-|----------|----------|----------|----------|--------------------------------|
+|----------------------------------|----------|------|----------|----------------------------------------------------------------------------------|
 | Import and clean dataset         | Not done | 5/31 | High     | Ensure data is appropriately imported for analysis                               |
 | Explore dataset                  | Not done | 6/3  | High     | Conduct data exploration to understand attributes and relationships              |
 | Transform and prep data          | Not done | 6/9  | High     | Prep data for analysis by ensuring all data is in clean format for processing    |

@@ -1,11 +1,11 @@
 ---
-title: "Project Title"
-subtitle: "INFO 526 - Summer 2024 - Final Project"
+title: "Method to the Madness"
+subtitle: "Understanding NCAA Tournament Dynamics Through Data Visualization"
 author: 
-  - name: "Team name"
+  - name: "Reagan Fleming"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "Project description"
+description: "The aim of this project is to explore the relationship between public predictions and real outcomes in the NCAA Division 1 Men's Basketball Tournament. I will be leveraging datasets containing team performance metrics and public pick percentages"
 format:
    html:
     code-tools: true
@@ -19,4 +19,19 @@ execute:
 
 ## Abstract
 
-Add project abstract here.
+This study aims to evaluate the accuracy of public predictions for the 2024 NCAA Men's Basketball Tournament and identify teams that consistently outperform or underperform their tournament seeding. For the first analysis, public pick percentages for each round will be compared with actual outcomes to calculate prediction accuracy, with a hypothesis that accuracy decreases in later rounds. For the second analysis, team performance will be assessed relative to seed expectations using PASE and PASERANK metrics and public picks data to highlight teams that consistently exceed or fall short of expectations. The findings will be visualized to effectively communicate insights into public prediction accuracy and team performance trends
+
+```{r}
+
+
+
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
