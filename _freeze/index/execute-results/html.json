@@ -1,0 +1,17 @@
+{
+  "hash": "da4df747204b162c1da2fb819d12708f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Method to the Madness\"\nsubtitle: \"Understanding NCAA Tournament Dynamics Through Data Visualization\"\nauthor: \n  - name: \"Reagan Fleming\"\n    affiliations:\n      - name: \"School of Information, University of Arizona\"\ndescription: \"The aim of this project is to explore the relationship between public predictions and real outcomes in the NCAA Division 1 Men's Basketball Tournament. I will be leveraging datasets containing team performance metrics and public pick percentages\"\nformat:\n   html:\n    code-tools: true\n    code-overflow: wrap\n    embed-resources: true\neditor: visual\nexecute:\n  warning: false\n  message: false\n  echo: false\n---\n\n\n## Abstract\n\nThis study aims to evaluate the accuracy of public predictions for the 2024 NCAA Men's Basketball Tournament and identify teams that consistently outperform or underperform their tournament seeding. For the first analysis, public pick percentages for each round will be compared with actual outcomes to calculate prediction accuracy, with a hypothesis that accuracy decreases in later rounds. For the second analysis, team performance will be assessed relative to seed expectations using PASE and PASERANK metrics and public picks data to highlight teams that consistently exceed or fall short of expectations. The findings will be visualized to effectively communicate insights into public prediction accuracy and team performance trends\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\npackage 'ggimage' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n\tC:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stdout}\n\n```\npackage 'jpeg' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n\tC:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stdout}\n\n```\npackage 'magick' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n\tC:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stdout}\n\n```\npackage 'png' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n\tC:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n```\n\n\n:::\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

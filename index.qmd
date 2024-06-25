@@ -14,24 +14,224 @@ format:
 editor: visual
 execute:
   warning: false
+  message: false
   echo: false
 ---
 
 ## Abstract
 
-This study aims to evaluate the accuracy of public predictions for the 2024 NCAA Men's Basketball Tournament and identify teams that consistently outperform or underperform their tournament seeding. For the first analysis, public pick percentages for each round will be compared with actual outcomes to calculate prediction accuracy, with a hypothesis that accuracy decreases in later rounds. For the second analysis, team performance will be assessed relative to seed expectations using PASE and PASERANK metrics and public picks data to highlight teams that consistently exceed or fall short of expectations. The findings will be visualized to effectively communicate insights into public prediction accuracy and team performance trends
+This study aims to evaluate the factors that influence public predictions for the 2024 NCAA Men's Basketball Tournament and identify teams that consistently outperform or underperform their tournament seeding. For the first analysis, public pick percentages for each round will be compared with historical tournament data to determine which factors (if any) have the heaviest influence on public perception. For the second analysis, team performance will be assessed relative to seed expectations using PASE and PASERANK metrics and public picks data to highlight teams that consistently exceed or fall short of expectations. Special attention will be given to the phenomenon of the 12-5 upset. The findings will be visualized to effectively communicate insights into public prediction and team performance trends
 
-```{r}
+## Introduction
+
+This study makes use of 2 data sources. First is NCAA Men's March Madness, sourced from Nishaan Amin's Kaggle dataset. This dataset includes historical data for the Men's College Basketball tournament from 2008 - 2004. The 2 files are team-results.csv and public-picks.csv. Team-results contains statistics from previous tournaments mapped to each team. Stats include wins, losses, Performance Against Seed Expectations, Performance Against Komputer Expectations, amount of times teams made it to each round, and winning percentage. Public-picks contains data about public predictions for the outcome of the 2024 NCAA Tournament. I wound up merging these datasets into one dataframe for analysis.
+
+The first goal of this project is to explore trends and see what factors influence fan predictions. Every year before the tournament, fans fill out brackets which serve as a prediction of what they think the outcome of each game in the tournament will be. Teams are assigned seeds 1-16. Your seed is based on regular season performance. A 1 seed is favored to win, while a 16 seed barely made the tournament and is considered an underdog. In the first round, 1 seeds play 16 seeds, 2 seeds play 15 seeds, 3 plays 14 and so on. This brings me to the second goal of the study, which is to identify which teams have historically outperformed or underperformed expectations and identify upset trends from past tournaments.
+
+```{r setup, message=FALSE, warning=FALSE}
+cran_mirror <- "https://cran.rstudio.com/"
+
+install.packages("ggimage", repos = cran_mirror)
+install.packages("jpeg", repos = cran_mirror)
+install.packages("grid", repos = cran_mirror)
+install.packages("magick", repos = cran_mirror)
+install.packages("png", repos = cran_mirror)
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(ggimage)
+library(jpeg)
+library(grid)
+library(magick)
+library(png)
+library(stringr)
+library(tidyr)
 
 
 
+```
 
+```{r load-data}
+picks <- read.csv("data/public-picks.csv")
+results <- read.csv("data/team-results.csv")
+
+```
+
+```{r data-manipulation-and-pic}
+picks <- picks |>
+  mutate(across(c(R64, R32, S16, E8, F4, FINALS), ~ as.numeric(sub("%", "", .))/100))
+
+merged_data <- merge(results, picks, by = "TEAM")
+
+merged_data <- merged_data |>
+  mutate(F4. = as.numeric(sub("%", "", F4.)) / 100,
+         CHAMP. = as.numeric(sub("%", "", CHAMP.)) / 100)
+
+image_path <- "images/madness.jpg"
+img <- image_read(image_path)
+img <- image_modulate(img, brightness = 100, saturation = 100, hue = 100)
+img <- image_transparent(img, "white", fuzz = 50)
+img <- image_colorize(img, opacity = 70, color = "white")
+
+image_write(img, path = "images/madness_faded.png", format = "png")
+
+```
+
+```         
+```
+
+## Question 1
+
+Q1: What historical performance factors have the biggest influence on public predictions?
+
+## Question 1 Introduction
+
+My dataset contains data both of team past performance, and fan perception of future performance. From this we can extrapolate what statistical factors fans are looking at when they make their bracket predictions. To accomplish this task we use parts of the dataset that include Win percentage, total wins, total losses, PASE, PAKE, number of Final 4 appearances, and calculated championship likelihood. This analysis highlights the contrast between simple, visible metrics and more advanced and nuanced metrics. Understanding these influences can help analysts and fans predict trends, identify biases, and understand the factors that contribute to the excitement and unpredictability of the March Madness tournament.
+
+## Question 1 Approach
+
+To address this question I used a correlation heatmap. This heatmap visually represents the correlation coefficients between historical performance metrics and public pick percentages for each round of the 2024 tournament. These metrics include Win%, total wins, total losses, PASE, PAKE, Final 4 appearance likelihood (calculated) and championship likelihood (calculated). Each cell in the heatmap displays the correlation coefficient, which indicates the strength and direction of the relationship between that metric and the public's prediction for the team to win a game in that round. The correlation heatmap is ideal because it provides a comprehensive view of the statistical relationships among multiple variables simultaneously. It allows us to quickly visualize which metrics have the strongest influence on public perception.
+
+## Question 1 Analysis
+
+```{r factors-heatmap}
+# Calculate correlation coefficients
+cor_matrix <- merged_data |>
+  select(R64.y, R32.y, S16.y, E8.y, F4.y, FINALS, WIN., PAKE, PASE, GAMES, W, L, TOP2, F4., CHAMP.) |>
+  cor(use = "complete.obs")
+
+cor_data <- as.data.frame(as.table(cor_matrix))
+colnames(cor_data) <- c("Metric1", "Metric2", "Correlation")
+
+cor_data_filtered <- cor_data |>
+  filter(Metric1 %in% c("R64.y", "R32.y", "S16.y", "E8.y", "F4.y", "FINALS") &
+         Metric2 %in% c("WIN.", "PAKE", "PASE", "GAMES", "W", "L", "TOP2", "F4.", "CHAMP.")) |>
+  mutate(Metric1 = recode(Metric1, "R64.y" = "R64", "R32.y" = "R32", "S16.y" = "S16", "E8.y" = "E8", "F4.y" = "F4", "FINALS" = "FINALS"),
+         Metric1 = factor(Metric1, levels = c("R64", "R32", "S16", "E8", "F4", "FINALS")),
+         Metric2 = factor(Metric2, levels = c("WIN.", "PAKE", "PASE", "GAMES", "W", "L", "TOP2", "F4.", "CHAMP.")))
+
+
+ggplot(cor_data_filtered, aes(x = Metric2, y = Metric1, fill = Correlation)) +
+  geom_tile() +
+  geom_text(aes(label = round(Correlation, 2)), color = "black", size = 3) +
+  scale_fill_gradient2(low = "red", high = "darkblue", mid = "white", midpoint = 0, 
+                       limit = c(-1, 1), space = "Lab", 
+                       name = "Correlation Coefficient") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  labs(title = "Correlation Coefficients between Historical Performance \n Metrics and 2024 Public Pick Percentages",
+       x = "Historical Performance Metrics",
+       y = "2024 Public Pick Percentages")
+```
+
+## Question 1 Discussion
+
+The correlation heatmap reveals several trends in the data
+
+## Question 2 Introduction
+
+## Question 2 Approach
+
+## Question 2 Analysis
+
+```{r pase-performance}
+
+image_path <- "images/madness_faded.png"
+img <- readPNG(image_path)
+img_grob <- rasterGrob(img, width = unit(1, "npc"), height = unit(1, "npc"))
+
+
+filtered_data <- merged_data |>
+  filter(GAMES >= 5)
+
+top_5_pase <- filtered_data |>
+  arrange(desc(PASE)) |>
+  slice_head(n = 5)
+
+bottom_5_pase <- filtered_data |>
+  arrange(PASE) |>
+  slice_head(n = 5)
+
+top_bottom_pase <- bind_rows(top_5_pase, bottom_5_pase)
+
+top_bottom_pase <- top_bottom_pase |>
+  mutate(color = ifelse(PASE >= 0, "blue", "red"))
+
+print(ggplot(top_bottom_pase, aes(x = reorder(TEAM, PASE), y = PASE, fill = color)) +
+  annotation_custom(img_grob, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+  geom_bar(stat = "identity", alpha=0.7) +
+  coord_flip() +
+  scale_fill_identity() +
+  theme_minimal() +
+  labs(title = "Top 5 and Bottom 5 Teams in PASE",
+       x = "Team",
+       y = "PASE",
+       caption = "*minimum 5 games") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, face="bold"),
+        axis.text.y = element_text(face = "bold"),
+        axis.title.x = element_text(face = "bold"),
+        axis.title.y = element_text(face = "bold"),
+        plot.title = element_text(hjust = 0.5, size = 14, face = "bold", lineheight = 1.2)))
+```
+
+```{r upsets-data-prep}
+
+years <- 2011:2022
+years <- years[years != 2020]  # Exclude 2020
+
+import_and_process_csv <- function(year) {
+  file_name <- paste0("data/seasons/", year, ".csv")
+  
+  df <- read.csv(file_name)
+   df <- df |>
+    mutate(Name = str_extract(Name.Seed, ".*(?=\\s\\d+$)"),  # Extract the team name
+           Seed = str_extract(Name.Seed, "\\d+$"),           # Extract the seed
+           Year = year) |>                                   # Add the year column
+    select(-Name.Seed)  # Drop the original Name+Seed column
+  
+  return(df)
+}
+  
+
+data_list <- lapply(years, import_and_process_csv)
+
+data_list <- lapply(years, import_and_process_csv)
+
+data_list <- data_list[!sapply(data_list, is.null)]
+
+all_mm_data <- bind_rows(data_list)
+
+
+
+```
+
+```{r upset-viz}
+filtered_data_9_16 <- all_mm_data |>
+  filter(as.numeric(Seed) >= 9 & as.numeric(Seed) <= 16)
+
+win_percentages <- filtered_data_9_16 |>
+  group_by(Seed) |>
+  summarise(Win_Percentage = mean(W_64) * 100)
+
+win_percentages$Seed <- as.numeric(win_percentages$Seed)
+
+ggplot(win_percentages, aes(x = as.factor(Seed), y = Win_Percentage)) +
+    annotation_custom(img_grob, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+  geom_bar(stat = "identity", fill = "darkblue", alpha=0.7) +
+  theme_minimal() +
+  labs(title = "First Round Win Percentages for Teams Seeded 9 through 16",
+       x = "Seed",
+       y = "Win Percentage") +
+  theme(axis.text.x = element_text(face = "bold"),
+        axis.text.y = element_text(face = "bold"),
+        axis.title.x = element_text(face = "bold"),
+        axis.title.y = element_text(face = "bold"),
+        plot.title = element_text(hjust = 0.5, face = "bold"))
 ```
 
 ```{r}
 
 ```
 
-```{r}
-
-```
+## Question 2 Discussion
