@@ -127,11 +127,19 @@ ggplot(cor_data_filtered, aes(x = Metric2, y = Metric1, fill = Correlation)) +
 
 ## Question 1 Discussion
 
-The correlation heatmap reveals several trends in the data
+The correlation heatmap reveals several trends in the data. We see that Win % and Final 4 percent have very strong correlations in the early rounds (R64 - S16). That correlation wanes in strength toward the later rounds, however. This could indicate that fans are looking at obvious, visible statistics when selecting teams in the early rounds. We can also see that PASE and PAKE have very low correlations in the early rounds, but the correlation grows stronger toward the late rounds (E8-FINALS). While PASE and PAKE can be great indicators of team performance, they aren't used by fans to select teams in early round games. The increase for PASE and PAKE toward later rounds could be indicative that fans are using them for later rounds, but the correlation still isn't extremely strong. These findings highlight that public predictions are largely influenced by simpler metrics, particularly in early rounds. Advanced metrics become more significant as the tournament progresses.
 
 ## Question 2 Introduction
 
+Q2: Which Men's College Basketball teams consistently outperform or underperform tournament seeding? Is there any truth to the 12-5 upset narrative?
+
+I wanted to perform analysis to find out which teams consistently perform better, and worse, than the seeders project them to. The team-results.csv file contains data for a statistic called PASE (Performance Against Seed Expectations). PASE measures the difference between how a team is projected to perform and how they actually perform in the tournament. A high PASE value means that a team consistently surpasses expectations and vice versa. Along the same line, I wanted to investigate the statistics behind the narrative of 12-5 upsets. A common piece of advice or "fan wisdom" in March Madness is that in the first round, there will be at least one upset in which a 12 seed team defeats a 5 seed team. For the 12-5 question, I used github user christoukmaji's MarchMadnessDatasets repo because it contained more specific information regarding team performance in individual games.
+
 ## Question 2 Approach
+
+This question is divided into 2 "sub-questions" and necessitated the creation of 2 separate visuals. For the PASE analysis I used a diverging bar chart. I knew that some values would be positive, and some negative. I wanted to show the top 5 overachievers and top 5 underachievers. I decided that a color coded diverging bar chart would be the perfect way to display this information. This would be a very easily digestible way to communicate to the audience which teams constantly overperform, and which ones consistently disappoint.
+
+To investigate any correlation between seeding and upset likelihood, I used a standard bar chart. It shows the winning percentage of teams by seed 9-16. In the tournament, 9 seeds face 8 seeds in the first round (not a huge upset, fairly minor). To the far right side of the bar chart, 16 seeds face 1 seeds in the first round. A 16 seed defeating a 1 seed is a massive upset, and has only happened twice in tournament history (2018 and 2023). We can see in the graph that 9 seeds are around 40% win percentage, 11 seeds are near 50% win percentage, 12 seeds are near 40%, followed by a steep drop off for 13 seeds and below. This shows that there is some truth to the narrative of 12-5 upsets, and that perhaps 11-6 upsets aren't being talked about enough.
 
 ## Question 2 Analysis
 
@@ -235,3 +243,15 @@ ggplot(win_percentages, aes(x = as.factor(Seed), y = Win_Percentage)) +
 ```
 
 ## Question 2 Discussion
+
+This analysis reveals some notable trends in March Madness performance. In the PASE bar chart, we see which teams perform to expectation, and which don't. Connecticut has the highest PASE ranking, and Texas has the lowest. This divergence underscores the unpredictability of March Madness tournaments and how some teams seem to consistently deliver, while others don't. A notable fact from this analysis, every team in the Top 5 PASE has won at least 1 National Championship since the year 2000, some (UConn, UNC) have won multiple championships in that timeframe. None of the bottom 5 has won a National Championship since 2000.
+
+The seeding bar chart reveals some interesting trends as well. We would expect to see 9 seeds with the highest win %, and that win % would decrease as the seed increases. That trend does hold in most cases, with 11 seeds and 12 seeds being the outliers. This lends some truth to the narrative of the 12-5 upset and begs the question, why isn't the 11-6 upset discussed more often? The answer lies in the date range of our data. If you analyze seasons back to 1985, 12-5 upsets do become more common. However, most casual fans have short term memory, and aren't considering tournaments that occurred when 8 track tapes were still around.
+
+## Notable "side notes":
+
+Utah State - this team follows both trends that were investigated in question 2. They have been assigned a 12 seed 5 times since 1985, more than any other team. In those games, they are 1-4 against 5 seeds. They are also in the bottom 5 PASE ranking. Perhaps fans are choosing them as the 12-5 upset and their PASE rank decreases because they can't pull it off.
+
+Purdue - also a bottom 5 team in PASE rank. Purdue had an excellent 2024 regular season, and were predicted to win the championship by approximately 10% of fans. Perhaps this one outlier effected the correlation between PASE and fans predicting that team to win in the finals.
+
+To conclude, this study answered some questions, and raised even more!
