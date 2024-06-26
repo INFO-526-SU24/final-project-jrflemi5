@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 80c23f05-986d-4db2-abbc-08020dd200e9
+      url: 'https://jrflemi5.quarto.pub/method-to-the-madness'

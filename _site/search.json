@@ -11,14 +11,14 @@
     "href": "proposal.html#dataset",
     "title": "Method to the Madness",
     "section": "Dataset",
-    "text": "Dataset\n\nteam_results &lt;- read_csv(\"data/team-results.csv\")\npublic_picks &lt;- read_csv(\"data/public-picks.csv\")\nhead(team_results)\n\n# A tibble: 6 × 20\n  `TEAM ID` TEAM     PAKE `PAKE RANK`  PASE `PASE RANK` GAMES     W     L `WIN%`\n      &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1         1 Abilen…   0.7          45   0.7          52     3     1     2  0.333\n2         2 Akron    -0.9         179  -1.1         187     4     0     4  0    \n3         3 Alabama  -2.1         211  -2.9         220    10     5     5  0.5  \n4         4 Albany   -0.4         147  -0.3         138     3     0     3  0    \n5         6 Americ…  -0.5         160  -0.4         150     3     0     3  0    \n6         8 Arizona  -1.7         206  -2.5         216    28    17    11  0.607\n# ℹ 10 more variables: R64 &lt;dbl&gt;, R32 &lt;dbl&gt;, S16 &lt;dbl&gt;, E8 &lt;dbl&gt;, F4 &lt;dbl&gt;,\n#   F2 &lt;dbl&gt;, CHAMP &lt;dbl&gt;, TOP2 &lt;dbl&gt;, `F4%` &lt;chr&gt;, `CHAMP%` &lt;chr&gt;\n\nhead(public_picks)\n\n# A tibble: 6 × 9\n   YEAR `TEAM NO` TEAM    R64    R32    S16    E8     F4     FINALS\n  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; \n1  2024      1079 Akron   7.16%  2.18%  0.63%  0.22%  0.10%  0.04% \n2  2024      1078 Alabama 87.11% 55.73% 13.55% 7.31%  2.89%  1.10% \n3  2024      1077 Arizona 95.19% 81.05% 52.02% 22.26% 10.05% 4.06% \n4  2024      1076 Auburn  90.17% 59.97% 15.93% 7.95%  3.64%  1.34% \n5  2024      1075 Baylor  92.34% 71.07% 33.68% 12.15% 4.35%  1.83% \n6  2024      1073 BYU     75.17% 21.70% 6.92%  1.64%  0.64%  0.32% \n\n\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nDataset Description: this dataset contains 2 .csv files. One called team-results.csv and another called public-picks.csv. Team-results contains ‘TEAMID’ as the unique identifier or primary key as well as several attributes that quantify the team’s performance in the tournament in each round. Team-results also quantifies the team’s performance vs Komputer Expectations and Seed Expectations.\nPublic-picks.csv contains public prediction data for teams in the tournament. Public-picks contains ‘TEAMNO’ as the unique identifier or primary key. Public-picks contains several attributes quantifying the percent of people who picked that team to win each round of the tournament.\nI chose this dataset for several reasons. I love sports, and wanted to use a dataset that is relevant to my personal interests in order to make this project more interesting. Any sports fan knows that “did you fill out your bracket?” dominates water cooler conversations in late February and early March. There are no recorded instances of someone making a perfect bracket prediction, and the odds of that happening are infinitesimal. When large numbers of crowds are attempting to predict unpredictable outcomes (gambling, the stock market) some interesting hivemind dynamics can come into play. One example, almost every year, a 12-seed team upsets a 5-seed team. One of the common questions asked when people fill out brackets is “who is your 12-5?” meaning: “of the 4 games in the first round in which a 12 seed plays a 5 seed, which 12 seed do you think will get the victory?” A quick google search shows that in the past 18 NCAA Tournaments, there have been 30 instances of a 12-5 upset. This equates to a 41.6% win percentage for a much lower seeded team. This seems unlikely, but happens with some regularity (almost half the time). I am also interested in discovering which teams, if any, consistently outperform or underperform fan expectations.\nMake sure to load the data and use inline code for some of this information."
+    "text": "Dataset\n\nteam_results &lt;- read_csv(\"data/team-results.csv\")\npublic_picks &lt;- read_csv(\"data/public-picks.csv\")\nhead(team_results)\n\n# A tibble: 6 × 20\n  `TEAM ID` TEAM     PAKE `PAKE RANK`  PASE `PASE RANK` GAMES     W     L `WIN%`\n      &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1         1 Abilen…   0.7          45   0.7          52     3     1     2  0.333\n2         2 Akron    -0.9         179  -1.1         187     4     0     4  0    \n3         3 Alabama  -2.1         211  -2.9         220    10     5     5  0.5  \n4         4 Albany   -0.4         147  -0.3         138     3     0     3  0    \n5         6 Americ…  -0.5         160  -0.4         150     3     0     3  0    \n6         8 Arizona  -1.7         206  -2.5         216    28    17    11  0.607\n# ℹ 10 more variables: R64 &lt;dbl&gt;, R32 &lt;dbl&gt;, S16 &lt;dbl&gt;, E8 &lt;dbl&gt;, F4 &lt;dbl&gt;,\n#   F2 &lt;dbl&gt;, CHAMP &lt;dbl&gt;, TOP2 &lt;dbl&gt;, `F4%` &lt;chr&gt;, `CHAMP%` &lt;chr&gt;\n\nhead(public_picks)\n\n# A tibble: 6 × 9\n   YEAR `TEAM NO` TEAM    R64    R32    S16    E8     F4     FINALS\n  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; \n1  2024      1079 Akron   7.16%  2.18%  0.63%  0.22%  0.10%  0.04% \n2  2024      1078 Alabama 87.11% 55.73% 13.55% 7.31%  2.89%  1.10% \n3  2024      1077 Arizona 95.19% 81.05% 52.02% 22.26% 10.05% 4.06% \n4  2024      1076 Auburn  90.17% 59.97% 15.93% 7.95%  3.64%  1.34% \n5  2024      1075 Baylor  92.34% 71.07% 33.68% 12.15% 4.35%  1.83% \n6  2024      1073 BYU     75.17% 21.70% 6.92%  1.64%  0.64%  0.32% \n\n\nDataset Description: this dataset contains 2 .csv files. One called team-results.csv and another called public-picks.csv. Team-results contains ‘TEAMID’ as the unique identifier or primary key as well as several attributes that quantify the team’s performance in the tournament in each round. Team-results also quantifies the team’s performance vs Komputer Expectations and Seed Expectations.\nPublic-picks.csv contains public prediction data for teams in the tournament. Public-picks contains ‘TEAMNO’ as the unique identifier or primary key. Public-picks contains several attributes quantifying the percent of people who picked that team to win each round of the tournament.\nI chose this dataset for several reasons. I love sports, and wanted to use a dataset that is relevant to my personal interests in order to make this project more interesting. Any sports fan knows that “did you fill out your bracket?” dominates water cooler conversations in late February and early March. There are no recorded instances of someone making a perfect bracket prediction, and the odds of that happening are infinitesimal. When large numbers of crowds are attempting to predict unpredictable outcomes (gambling, the stock market) some interesting hivemind dynamics can come into play. One example, almost every year, a 12-seed team upsets a 5-seed team. One of the common questions asked when people fill out brackets is “who is your 12-5?” meaning: “of the 4 games in the first round in which a 12 seed plays a 5 seed, which 12 seed do you think will get the victory?” A quick google search shows that in the past 18 NCAA Tournaments, there have been 30 instances of a 12-5 upset. This equates to a 41.6% win percentage for a much lower seeded team. This seems unlikely, but happens with some regularity (almost half the time). I am also interested in discovering which teams, if any, consistently outperform or underperform fan expectations."
   },
   {
     "objectID": "proposal.html#questions",
     "href": "proposal.html#questions",
     "title": "Method to the Madness",
     "section": "Questions",
-    "text": "Questions\nThe two questions you want to answer.\nQ1: How accurate are public predictions in each round of the NCAA tournament compared to actual outcomes?\nQ2: Which Men’s College Basketball teams consistently outperform or underperform fan expectations/tournament seeding?"
+    "text": "Questions\nThe two questions you want to answer.\nQ1: What historical performance factors have the biggest influence on public predictions?\nQ2: Which Men’s College Basketball teams consistently outperform or underperform tournament seeding? Is there any truth to the 12-5 upset narrative?"
   },
   {
     "objectID": "proposal.html#analysis-plan",
@@ -28,18 +28,116 @@
     "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).\n\nQ1 plan: load the datasets into Rstudio. Ensure correct formatting. Dataframes may have to be merged on a common value (primary keys). Then for each team in each round I will compare the public pick percentages with the actual outcomes and determine metrics for prediction accuracy. My hypothesis is that as the rounds advance toward Final 4 and championship, public pick accuracy will decrease. I will then determine which visualizations will be most effective in communicating my findings\nQ2 plan: Load and clean data from team-results.csv. Use PASE and PASERANK columns to determine how teams performed relative to seed expectations. Use data from public-picks.csv to determine how the team performed relative to crowd expectations. Identify which teams (if any) consistently over or underperform relative to seeding and crowd expectations. Then I will determine the appropriate ways to visualize this information."
   },
   {
+    "objectID": "proposal.html#plan-of-attack",
+    "href": "proposal.html#plan-of-attack",
+    "title": "Method to the Madness",
+    "section": "Plan of attack",
+    "text": "Plan of attack\n\n\n\n\n\n\n\n\n\n\nTask Name\nStatus\nDue\nPriority\nSummary\n\n\n\n\nImport and clean dataset\nDone\n5/31\nHigh\nEnsure data is appropriately imported for analysis\n\n\nExplore dataset\nDone\n6/3\nHigh\nConduct data exploration to understand attributes and relationships\n\n\nTransform and prep data\nDone\n6/9\nHigh\nPrep data for analysis by ensuring all data is in clean format for processing\n\n\n“80%” solution for Q1\nDone\n6/14\nHigh\nEstablish effective comparison of public predictions to actual outcomes\n\n\n“80%” solution for Q2\nDone\n6/18\nHigh\nIdentify over and underperformers relative to seeding and public predictions\n\n\nDevelop visualizations\nDone\n6/21\nHigh\nDetermine and develop appropriate visualizations to report findings\n\n\nReview and refine visualizations\nDone\n6/23\nHigh\nGive visualizations a “once over” to ensure they effectively present data\n\n\nFinal report and presentation\nDone\n6/24\nHigh\nCompile findings and visualizations into a comprehensive report for presentation"
+  },
+  {
+    "objectID": "proposal.html#explanation-of-terms-for-non-sports-fans",
+    "href": "proposal.html#explanation-of-terms-for-non-sports-fans",
+    "title": "Method to the Madness",
+    "section": "Explanation of terms (for non sports fans)",
+    "text": "Explanation of terms (for non sports fans)\nEvery year at the end of the Men’s College Basketball season, the best 64 teams are selected by a committee to participate in a tournament to determine the champion of the season. The tournament is conducted in a single elimination format, meaning a team is eliminated from contention as soon as they lose a game. The teams are assigned “seeds” between 1 and 16. The seeding is kind of like a rank. The 4 teams with a 1 seed are considered the favorites to win the tournament, while the 4 teams with a 16 seed are the underdogs. A bracket looks something like this.\n\nIn the opening round, the 16 seeds play against 1 seeds, 15 seeds play against 2 seeds, and so on. This is advantageous to the higher seed teams because they begin the tournament playing against teams ranked significantly lower than them. There has only been 1 instance of a 16 seed beating a 1 seed in the history of the tournament. As discussed before, there have been many instances of 12 seeds defeating 5 seeds, which seems counter-intuitive because of how the seeds are assigned (upsets of that nature should be uncommon).\nAfter seeds are assigned and the teams all “know their place” in the tournament, fans (and oftentimes even non sports fans) will make predictions as to how the tournament could play out. There are no recorded instances of someone making a perfectly correct bracket prediction. There are 63 games in the tournament, which calculates to 2^63 possible outcomes. The odds of a random guesser filling out a perfect bracket are 1 in 9.2 quintillion. The tournament only lasts a few days and is often filled with upsets, unlikely contenders lasting much longer than they should (often referred to as Cinderella Stories), and basketball on the television all day for several days for sports fans. This short lived excitement has earned the tournament the nickname “March Madness”."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Method to the Madness",
     "section": "",
-    "text": "This study aims to evaluate the accuracy of public predictions for the 2024 NCAA Men’s Basketball Tournament and identify teams that consistently outperform or underperform their tournament seeding. For the first analysis, public pick percentages for each round will be compared with actual outcomes to calculate prediction accuracy, with a hypothesis that accuracy decreases in later rounds. For the second analysis, team performance will be assessed relative to seed expectations using PASE and PASERANK metrics and public picks data to highlight teams that consistently exceed or fall short of expectations. The findings will be visualized to effectively communicate insights into public prediction accuracy and team performance trends\n\n\npackage 'ggimage' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n\n\npackage 'jpeg' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n\n\npackage 'magick' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n\n\npackage 'png' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages"
+    "text": "This study aims to evaluate the factors that influence public predictions for the 2024 NCAA Men’s Basketball Tournament and identify teams that consistently outperform or underperform their tournament seeding. For the first analysis, public pick percentages for each round will be compared with historical tournament data to determine which factors (if any) have the heaviest influence on public perception. For the second analysis, team performance will be assessed relative to seed expectations using PASE and PASERANK metrics and public picks data to highlight teams that consistently exceed or fall short of expectations. Special attention will be given to the phenomenon of the 12-5 upset. The findings will be visualized to effectively communicate insights into public prediction and team performance trends"
   },
   {
     "objectID": "index.html#abstract",
     "href": "index.html#abstract",
     "title": "Method to the Madness",
     "section": "",
-    "text": "This study aims to evaluate the accuracy of public predictions for the 2024 NCAA Men’s Basketball Tournament and identify teams that consistently outperform or underperform their tournament seeding. For the first analysis, public pick percentages for each round will be compared with actual outcomes to calculate prediction accuracy, with a hypothesis that accuracy decreases in later rounds. For the second analysis, team performance will be assessed relative to seed expectations using PASE and PASERANK metrics and public picks data to highlight teams that consistently exceed or fall short of expectations. The findings will be visualized to effectively communicate insights into public prediction accuracy and team performance trends\n\n\npackage 'ggimage' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n\n\npackage 'jpeg' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n\n\npackage 'magick' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages\n\n\npackage 'png' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\Reagan\\AppData\\Local\\Temp\\RtmpO8lPpt\\downloaded_packages"
+    "text": "This study aims to evaluate the factors that influence public predictions for the 2024 NCAA Men’s Basketball Tournament and identify teams that consistently outperform or underperform their tournament seeding. For the first analysis, public pick percentages for each round will be compared with historical tournament data to determine which factors (if any) have the heaviest influence on public perception. For the second analysis, team performance will be assessed relative to seed expectations using PASE and PASERANK metrics and public picks data to highlight teams that consistently exceed or fall short of expectations. Special attention will be given to the phenomenon of the 12-5 upset. The findings will be visualized to effectively communicate insights into public prediction and team performance trends"
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Method to the Madness",
+    "section": "Introduction",
+    "text": "Introduction\nThis study makes use of 2 data sources. First is NCAA Men’s March Madness, sourced from Nishaan Amin’s Kaggle dataset. This dataset includes historical data for the Men’s College Basketball tournament from 2008 - 2004. The 2 files are team-results.csv and public-picks.csv. Team-results contains statistics from previous tournaments mapped to each team. Stats include wins, losses, Performance Against Seed Expectations, Performance Against Komputer Expectations, amount of times teams made it to each round, and winning percentage. Public-picks contains data about public predictions for the outcome of the 2024 NCAA Tournament. I wound up merging these datasets into one dataframe for analysis.\nThe first goal of this project is to explore trends and see what factors influence fan predictions. Every year before the tournament, fans fill out brackets which serve as a prediction of what they think the outcome of each game in the tournament will be. Teams are assigned seeds 1-16. Your seed is based on regular season performance. A 1 seed is favored to win, while a 16 seed barely made the tournament and is considered an underdog. In the first round, 1 seeds play 16 seeds, 2 seeds play 15 seeds, 3 plays 14 and so on. This brings me to the second goal of the study, which is to identify which teams have historically outperformed or underperformed expectations and identify upset trends from past tournaments."
+  },
+  {
+    "objectID": "index.html#question-1",
+    "href": "index.html#question-1",
+    "title": "Method to the Madness",
+    "section": "Question 1",
+    "text": "Question 1\nQ1: What historical performance factors have the biggest influence on public predictions?"
+  },
+  {
+    "objectID": "index.html#question-1-introduction",
+    "href": "index.html#question-1-introduction",
+    "title": "Method to the Madness",
+    "section": "Question 1 Introduction",
+    "text": "Question 1 Introduction\nMy dataset contains data both of team past performance, and fan perception of future performance. From this we can extrapolate what statistical factors fans are looking at when they make their bracket predictions. To accomplish this task we use parts of the dataset that include Win percentage, total wins, total losses, PASE, PAKE, number of Final 4 appearances, and calculated championship likelihood. This analysis highlights the contrast between simple, visible metrics and more advanced and nuanced metrics. Understanding these influences can help analysts and fans predict trends, identify biases, and understand the factors that contribute to the excitement and unpredictability of the March Madness tournament."
+  },
+  {
+    "objectID": "index.html#question-1-approach",
+    "href": "index.html#question-1-approach",
+    "title": "Method to the Madness",
+    "section": "Question 1 Approach",
+    "text": "Question 1 Approach\nTo address this question I used a correlation heatmap. This heatmap visually represents the correlation coefficients between historical performance metrics and public pick percentages for each round of the 2024 tournament. These metrics include Win%, total wins, total losses, PASE, PAKE, Final 4 appearance likelihood (calculated) and championship likelihood (calculated). Each cell in the heatmap displays the correlation coefficient, which indicates the strength and direction of the relationship between that metric and the public’s prediction for the team to win a game in that round. The correlation heatmap is ideal because it provides a comprehensive view of the statistical relationships among multiple variables simultaneously. It allows us to quickly visualize which metrics have the strongest influence on public perception."
+  },
+  {
+    "objectID": "index.html#question-1-analysis",
+    "href": "index.html#question-1-analysis",
+    "title": "Method to the Madness",
+    "section": "Question 1 Analysis",
+    "text": "Question 1 Analysis"
+  },
+  {
+    "objectID": "index.html#question-1-discussion",
+    "href": "index.html#question-1-discussion",
+    "title": "Method to the Madness",
+    "section": "Question 1 Discussion",
+    "text": "Question 1 Discussion\nThe correlation heatmap reveals several trends in the data. We see that Win % and Final 4 percent have very strong correlations in the early rounds (R64 - S16). That correlation wanes in strength toward the later rounds, however. This could indicate that fans are looking at obvious, visible statistics when selecting teams in the early rounds. We can also see that PASE and PAKE have very low correlations in the early rounds, but the correlation grows stronger toward the late rounds (E8-FINALS). While PASE and PAKE can be great indicators of team performance, they aren’t used by fans to select teams in early round games. The increase for PASE and PAKE toward later rounds could be indicative that fans are using them for later rounds, but the correlation still isn’t extremely strong. These findings highlight that public predictions are largely influenced by simpler metrics, particularly in early rounds. Advanced metrics become more significant as the tournament progresses."
+  },
+  {
+    "objectID": "index.html#question-2-introduction",
+    "href": "index.html#question-2-introduction",
+    "title": "Method to the Madness",
+    "section": "Question 2 Introduction",
+    "text": "Question 2 Introduction\nQ2: Which Men’s College Basketball teams consistently outperform or underperform tournament seeding? Is there any truth to the 12-5 upset narrative?\nI wanted to perform analysis to find out which teams consistently perform better, and worse, than the seeders project them to. The team-results.csv file contains data for a statistic called PASE (Performance Against Seed Expectations). PASE measures the difference between how a team is projected to perform and how they actually perform in the tournament. A high PASE value means that a team consistently surpasses expectations and vice versa. Along the same line, I wanted to investigate the statistics behind the narrative of 12-5 upsets. A common piece of advice or “fan wisdom” in March Madness is that in the first round, there will be at least one upset in which a 12 seed team defeats a 5 seed team. For the 12-5 question, I used github user christoukmaji’s MarchMadnessDatasets repo because it contained more specific information regarding team performance in individual games."
+  },
+  {
+    "objectID": "index.html#question-2-approach",
+    "href": "index.html#question-2-approach",
+    "title": "Method to the Madness",
+    "section": "Question 2 Approach",
+    "text": "Question 2 Approach\nThis question is divided into 2 “sub-questions” and necessitated the creation of 2 separate visuals. For the PASE analysis I used a diverging bar chart. I knew that some values would be positive, and some negative. I wanted to show the top 5 overachievers and top 5 underachievers. I decided that a color coded diverging bar chart would be the perfect way to display this information. This would be a very easily digestible way to communicate to the audience which teams constantly overperform, and which ones consistently disappoint.\nTo investigate any correlation between seeding and upset likelihood, I used a standard bar chart. It shows the winning percentage of teams by seed 9-16. In the tournament, 9 seeds face 8 seeds in the first round (not a huge upset, fairly minor). To the far right side of the bar chart, 16 seeds face 1 seeds in the first round. A 16 seed defeating a 1 seed is a massive upset, and has only happened twice in tournament history (2018 and 2023). We can see in the graph that 9 seeds are around 40% win percentage, 11 seeds are near 50% win percentage, 12 seeds are near 40%, followed by a steep drop off for 13 seeds and below. This shows that there is some truth to the narrative of 12-5 upsets, and that perhaps 11-6 upsets aren’t being talked about enough."
+  },
+  {
+    "objectID": "index.html#question-2-analysis",
+    "href": "index.html#question-2-analysis",
+    "title": "Method to the Madness",
+    "section": "Question 2 Analysis",
+    "text": "Question 2 Analysis"
+  },
+  {
+    "objectID": "index.html#question-2-discussion",
+    "href": "index.html#question-2-discussion",
+    "title": "Method to the Madness",
+    "section": "Question 2 Discussion",
+    "text": "Question 2 Discussion\nThis analysis reveals some notable trends in March Madness performance. In the PASE bar chart, we see which teams perform to expectation, and which don’t. Connecticut has the highest PASE ranking, and Texas has the lowest. This divergence underscores the unpredictability of March Madness tournaments and how some teams seem to consistently deliver, while others don’t. A notable fact from this analysis, every team in the Top 5 PASE has won at least 1 National Championship since the year 2000, some (UConn, UNC) have won multiple championships in that timeframe. None of the bottom 5 has won a National Championship since 2000.\nThe seeding bar chart reveals some interesting trends as well. We would expect to see 9 seeds with the highest win %, and that win % would decrease as the seed increases. That trend does hold in most cases, with 11 seeds and 12 seeds being the outliers. This lends some truth to the narrative of the 12-5 upset and begs the question, why isn’t the 11-6 upset discussed more often? The answer lies in the date range of our data. If you analyze seasons back to 1985, 12-5 upsets do become more common. However, most casual fans have short term memory, and aren’t considering tournaments that occurred when 8 track tapes were still around."
+  },
+  {
+    "objectID": "index.html#notable-side-notes",
+    "href": "index.html#notable-side-notes",
+    "title": "Method to the Madness",
+    "section": "Notable “side notes”:",
+    "text": "Notable “side notes”:\nUtah State - this team follows both trends that were investigated in question 2. They have been assigned a 12 seed 5 times since 1985, more than any other team. In those games, they are 1-4 against 5 seeds. They are also in the bottom 5 PASE ranking. Perhaps fans are choosing them as the 12-5 upset and their PASE rank decreases because they can’t pull it off.\nPurdue - also a bottom 5 team in PASE rank. Purdue had an excellent 2024 regular season, and were predicted to win the championship by approximately 10% of fans. Perhaps this one outlier effected the correlation between PASE and fans predicting that team to win in the finals.\nTo conclude, this study answered some questions, and raised even more!"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Reagan Fleming For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\nReagan Fleming - studying for M.S. in Systems Engineering"
   },
   {
     "objectID": "presentation.html#quarto",
@@ -103,33 +201,5 @@
     "title": "Project title",
     "section": "Feeling adventurous?",
     "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This project was developed by [Team Name] For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nTeam member 1: One sentence description of Team member 1 (e.g., year, major, etc.).\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.).\nTeam member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\nTeam member 4: One sentence description of Team member 4 (e.g., year, major, etc.)."
-  },
-  {
-    "objectID": "proposal.html#plan-of-attack",
-    "href": "proposal.html#plan-of-attack",
-    "title": "Method to the Madness",
-    "section": "Plan of attack",
-    "text": "Plan of attack\n\n\n\n\n\n\n\n\n\n\nTask Name\nStatus\nDue\nPriority\nSummary\n\n\n\n\nImport and clean dataset\nNot done\n5/31\nHigh\nEnsure data is appropriately imported for analysis\n\n\nExplore dataset\nNot done\n6/3\nHigh\nConduct data exploration to understand attributes and relationships\n\n\nTransform and prep data\nNot done\n6/9\nHigh\nPrep data for analysis by ensuring all data is in clean format for processing\n\n\n“80%” solution for Q1\nNot done\n6/14\nHigh\nEstablish effective comparison of public predictions to actual outcomes\n\n\n“80%” solution for Q2\nNot done\n6/18\nHigh\nIdentify over and underperformers relative to seeding and public predictions\n\n\nDevelop visualizations\nNot done\n6/21\nHigh\nDetermine and develop appropriate visualizations to report findings\n\n\nReview and refine visualizations\nNot done\n6/23\nHigh\nGive visualizations a “once over” to ensure they effectively present data\n\n\nFinal report and presentation\nNot done\n6/24\nHigh\nCompile findings and visualizations into a comprehensive report for presentation"
-  },
-  {
-    "objectID": "presentation.html",
-    "href": "presentation.html",
-    "title": "Project title",
-    "section": "",
-    "text": "The presentation is created using the Quarto CLI\n## sets the start of a new slide\n\n\n\n\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis\n\n\n\n\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSome text\ngoes here"
-  },
-  {
-    "objectID": "presentation.html#footnotes",
-    "href": "presentation.html#footnotes",
-    "title": "Project title",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nAnd add footnotes↩︎"
   }
 ]

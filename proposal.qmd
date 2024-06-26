@@ -63,16 +63,16 @@ Q2 plan: Load and clean data from team-results.csv. Use PASE and PASERANK column
 
 ## Plan of attack
 
-| Task Name                        | Status   | Due  | Priority | Summary                                                                          |
-|----------------------------------|----------|------|----------|----------------------------------------------------------------------------------|
-| Import and clean dataset         | Not done | 5/31 | High     | Ensure data is appropriately imported for analysis                               |
-| Explore dataset                  | Not done | 6/3  | High     | Conduct data exploration to understand attributes and relationships              |
-| Transform and prep data          | Not done | 6/9  | High     | Prep data for analysis by ensuring all data is in clean format for processing    |
-| "80%" solution for Q1            | Not done | 6/14 | High     | Establish effective comparison of public predictions to actual outcomes          |
-| "80%" solution for Q2            | Not done | 6/18 | High     | Identify over and underperformers relative to seeding and public predictions     |
-| Develop visualizations           | Not done | 6/21 | High     | Determine and develop appropriate visualizations to report findings              |
-| Review and refine visualizations | Not done | 6/23 | High     | Give visualizations a "once over" to ensure they effectively present data        |
-| Final report and presentation    | Not done | 6/24 | High     | Compile findings and visualizations into a comprehensive report for presentation |
+| Task Name                        | Status | Due  | Priority | Summary                                                                          |
+|----------------------------------|--------|------|----------|----------------------------------------------------------------------------------|
+| Import and clean dataset         | Done   | 5/31 | High     | Ensure data is appropriately imported for analysis                               |
+| Explore dataset                  | Done   | 6/3  | High     | Conduct data exploration to understand attributes and relationships              |
+| Transform and prep data          | Done   | 6/9  | High     | Prep data for analysis by ensuring all data is in clean format for processing    |
+| "80%" solution for Q1            | Done   | 6/14 | High     | Establish effective comparison of public predictions to actual outcomes          |
+| "80%" solution for Q2            | Done   | 6/18 | High     | Identify over and underperformers relative to seeding and public predictions     |
+| Develop visualizations           | Done   | 6/21 | High     | Determine and develop appropriate visualizations to report findings              |
+| Review and refine visualizations | Done   | 6/23 | High     | Give visualizations a "once over" to ensure they effectively present data        |
+| Final report and presentation    | Done   | 6/24 | High     | Compile findings and visualizations into a comprehensive report for presentation |
 
 ## Explanation of terms (for non sports fans)
 
